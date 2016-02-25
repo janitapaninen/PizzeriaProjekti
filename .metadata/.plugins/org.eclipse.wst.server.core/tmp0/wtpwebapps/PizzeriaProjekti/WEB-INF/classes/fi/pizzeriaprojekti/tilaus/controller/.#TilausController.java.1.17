@@ -1,0 +1,180 @@
+package fi.pizzeriaprojekti.tilaus.controller;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dao.TilausDAO;
+import fi.pizzeriaprojekti.admin.bean.Ostoskori;
+import fi.pizzeriaprojekti.admin.bean.Pizza;
+import fi.pizzeriaprojekti.admin.bean.ostoskoriPizza;
+import fi.pizzeriaprojekti.ostoskori.controller.ostoskoriController;
+
+/**
+ * Servlet implementation class Controller
+ */
+@WebServlet("/TilausController")
+public class TilausController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public TilausController() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		// PizzaDAO pdao = new PizzaDAO();
+		TilausDAO tdao = new TilausDAO();
+
+		// Luodaan pizza lista
+		List<Pizza> pizzat = null;
+
+		// Avataan yhteys tietokantaan
+		tdao.avaaYhteys();
+		// Haetaan pizzat tietokannasta
+		try {
+			pizzat = tdao.haePizzat();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		if (request.getParameter("action") != null
+				&& request.getParameter("action").equals("jarjestaHinta")) {
+			int jNumber = 2;
+			tdao.avaaYhteys();
+			try {
+				pizzat = tdao.jarjestaPizzat(jNumber);
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			tdao.suljeYhteys();
+		} else if (request.getParameter("action") != null
+				&& request.getParameter("action").equals("jarjestaNimi")) {
+			int jNumber = 1;
+			tdao.avaaYhteys();
+			try {
+				pizzat = tdao.jarjestaPizzat(jNumber);
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			tdao.suljeYhteys();
+		}
+
+		request.setAttribute("pizzat", pizzat);
+
+		// -------------OSTOSKORI---------------
+
+		HttpSession session = request.getSession(true);
+		List<ostoskoriPizza> ostokset = (ArrayList<ostoskoriPizza>) session.getAttribute("kori");
+		Pizza pizza = new Pizza();
+		ostoskoriPizza ostoskoriPizza = new ostoskoriPizza();
+
+		if (ostokset == null) {
+			ostokset = new ArrayList<ostoskoriPizza>();
+		}
+
+		if (request.getParameter("action") != null
+				&& request.getParameter("action").equals("lisaa")) {
+
+			String strLisattavaId = request.getParameter("pizzanumero");
+			int lisattavaId = Integer.parseInt(strLisattavaId);
+			//try {
+				tdao.avaaYhteys();
+				try {
+					pizza = tdao.haePizza(lisattavaId);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				String Strlkm = request.getParameter("lkm");
+				int lkm = Integer.parseInt(Strlkm);
+				ostoskoriPizza.setId(pizza.getId());
+				ostoskoriPizza.setHinta(pizza.getHinta());
+				ostoskoriPizza.setNimi(pizza.getNimi());
+				ostoskoriPizza.setLkm(lkm);
+				ostoskoriPizza.setTaytteet(pizza.getTaytteet());
+				ostokset.add(ostoskoriPizza);
+				
+				request.getSession().setAttribute("kori", ostokset);
+				tdao.suljeYhteys();
+				
+				// ostokset = (ArrayList<Pizza>) session.getAttribute("kori");
+
+			//} catch (SQLException e) {
+				//e.printStackTrace();
+			//}
+			
+			
+			// ostosKori = (ArrayList<Pizza>) session.getAttribute("ostosKori");
+			Enumeration e = session.getAttributeNames();
+			while (e.hasMoreElements()) {
+				String key = (String) e.nextElement();
+				System.out.println(session.getAttribute(key));
+			}
+		}
+
+		RequestDispatcher disp = request
+				.getRequestDispatcher("onlineTilaus.jsp");
+		disp.forward(request, response);
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		if (request.getParameter("action") != null
+				&& request.getParameter("action").equals("poistakorista")) {
+
+			HttpSession session = request.getSession();
+			String Strpoistettava = request.getParameter("pizzanumero");
+			int poistettava = Integer.parseInt(Strpoistettava);
+			
+			List<ostoskoriPizza> ostokset = (ArrayList<ostoskoriPizza>) session
+					.getAttribute("kori");
+			System.out.println(ostokset);
+
+			for (int i = 0; i < ostokset.size(); i++) {
+				if (ostokset.get(i).getId() == poistettava) {
+					ostokset.remove(i);
+					request.getSession().setAttribute("kori", ostokset);
+					response.sendRedirect("TilausController?deleted=true");
+				}
+			}
+
+		}
+
+		if (request.getParameter("action2") != null
+				&& request.getParameter("action2").equals("tyhjaa")) {
+			HttpSession session = request.getSession();
+			session.invalidate();
+			response.sendRedirect("TilausController?deleted=true");
+		}
+	}
+	
+}

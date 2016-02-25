@@ -1,0 +1,352 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="fi.pizzeriaprojekti.admin.bean.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta charset="utf-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>Fiori e Castello - Onlinetilaus</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/tyyli.css" rel="stylesheet">
+<link
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
+	rel="stylesheet">
+
+<script>
+function readCookie(name){
+return(document.cookie.match('(^|; )'+name+'=([^;]*)')||0)[2]
+}
+
+
+/*function pois() {
+	 
+	  var confirmmessage = "Olet poistumassa OnlineTilauksesta. Oletko varma?";
+	  var go = "http://localhost:8080/PizzeriaProjekti/ClientController";
+	  var stay = "http://localhost:8080/PizzeriaProjekti/TilausController";
+	  //var message = "Action Was Cancelled By User";
+	 
+	  if (confirm(confirmmessage)) {
+	 
+	      window.location = go;
+	 
+	  } else {
+	 
+		  window.location = stay; 
+		  //alert(message);
+	  }
+	}*/
+	
+	
+
+</script>
+
+</head>
+
+<body>
+
+
+
+<body onScroll="document.cookie='ypos=' + window.pageYOffset" onLoad="window.scrollTo(0,readCookie('ypos'))">
+
+
+	<%
+		DecimalFormat desi = new DecimalFormat("0.00");
+	%>
+
+
+	<!--navbar beginning----------------------------------------------------------------------------->
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" id="poispois" href="http://localhost:8080/PizzeriaProjekti/ClientController" onClick="pois()">Takaisin etusivulle</a>
+		</div> 
+		<!-- -----------------------------------------------------ostoskori beginning----------------------- -->
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-expanded="false"> <span
+						class="glyphicon glyphicon-shopping-cart"></span> 7 - Tuotteet<span
+						class="caret"></span></a>
+					<ul class="dropdown-menu dropdown-cart" role="menu">
+
+						<%
+							if(session != null && session.getAttribute("kori")!=null ) {
+										            	ArrayList<Pizza> ostoskoriPizzat = (ArrayList<Pizza>)session.getAttribute("kori");
+										            	
+										            	
+										            	for(int i=0; i< ostoskoriPizzat.size(); i++) {
+						%>
+						<li><span class="item"> <span class="item-left">
+									<img src="img/minipizza.png" alt="" /> <span class="item-info">
+										<span><%=ostoskoriPizzat.get(i).getNimi()%></span> <span><%=desi.format(ostoskoriPizzat.get(i).getHinta())%></span>
+								</span>
+							</span>
+
+								<form action="TilausController" method="post">
+									<span class="item-right"> 
+									<input type="hidden" class="btn btn-xs btn-danger pull-right" name="action" value="poistakorista" /> 
+									<input type="hidden" name="pizzanumero" value="<%out.print(ostoskoriPizzat.get(i).getId()); %>" />
+										<button class="btn btn-xs btn-danger pull-right" type="submit">
+											x
+											</button--></span></span></li>
+						</form>
+
+						<%
+							}
+										            }
+						%>
+						<%
+							if(session != null && session.getAttribute("kori")!=null ) {
+						%>
+						<form action="TilausController" method="post">
+						<input type="hidden" name="action2" method="post" value="tyhjaa"/>
+						<button type="submit">Tyhjää kori</button>
+						</form>
+						<li><a class="text-center" href="kassaNakyma.jsp">Siirry kassalle</a></li>
+						<%
+							}
+						%>
+					</ul></li>
+			</ul>
+		</div>
+	</div>
+	</nav>
+
+
+
+	<!-- beginning of header------------------------------------------------------------------------------------>
+<header>
+
+	<div class="row" id="header">
+		<div class="col-md-3">
+			<img alt="logo" id="logo" src="img/logo_yellow.png">
+		</div>
+
+		<div class="col-xs-8 header">
+			<div class="intro">
+				<h1>Tervetuloa onlinetilaukseen!</h1>
+				<p>
+
+					***Huom! Vain nouto!***<br> Voitte nauttia pizzoista myös
+					xxxxkadun ravintolassamme. Pöytävarauksen voit tehdä soittamalla
+					numeroon 123456789.
+				</p>
+
+				<h1>Aukioloajat</h1>
+				MA-PE 10:30 - 21:00 <br>LAUANTAI 11:30 - 21:00 <br>SUNNUNTAI
+				11:30 - 18:00
+			</div>
+		</div>
+
+
+
+	</div>
+
+
+</header>
+
+	<div class="rako"></div>
+	<!----------------------------------------------------------------end of header--------------------------------->
+
+	<!----------------------------------------------------beginning of pizzas------------------------------------->
+
+	<div class="container">
+
+		<form action="TilausController" method="get">
+							<button class="orderByBtn" id="jarjestaHinta" type="submit" name="action"
+								value="jarjestaHinta"
+								onunload="unloadP('UniquePageNameHereScroll')"
+								onload="loadP('UniquePageNameHereScroll')">Hintajärjestykseen</button>
+							<input type="hidden" name="index" value="jarjestaHinta" />
+
+							<button class="orderByBtn" id="jarjestaNimi" type="submit" name="action"
+								value="jarjestaNimi">Aakkosjärjestykseen</button>
+							<input type="hidden" name="index" value="jarjestaNimi" />
+						</form>
+
+		<form action="TilausController" method="get">
+
+			<select name='action' onchange='this.form.submit()'>
+				<option>Järjestä</option>
+				<option value="jarjestaHinta">Hintajärjestykseen</option>
+
+				<option value="jarjestaNimi">Aakkosjärjestykseen</option>
+			</select>
+			<noscript>
+				<input type="submit" value="Submit">
+			</noscript>
+
+	</form>	
+<!--  desktopMenu -tulostus -->			
+<div id="desktopMenu" class="hidden">
+		<div class="row">
+
+			<%
+				ArrayList<Pizza> pizzat = (ArrayList<Pizza>)request.getAttribute("pizzat");
+
+						out.println("<div class=\"col-xs-6\">");
+													                       		 
+						for(int i=0; i < pizzat.size(); i+=2) {
+						out.print("<form action=\"TilausController\" method=\"get\">");
+													                				
+						out.println("<div class=\"pizzabox\">");
+													                				
+						out.println("<tr>");
+						out.println("<td><img alt=\"photo of pizza\" id=\"pizza1\" src=\"img/pizza1.jpg\"></td>");
+						
+						out.println("<td> <p class=\"lead menuitemhead\">" + pizzat.get(i).getNimi().toUpperCase() + " </p></td>");
+						out.println("<td>" + pizzat.get(i).getTaytteet() + "</td>");
+						out.println("<td> <h5 class=\"menuitemprice\">" + desi.format(pizzat.get(i).getHinta()) + "€</h5></td>");			
+						out.println("<td> <label><input type=\"checkbox\" name=\"gluuteniton\" value=\"Gluuteniton\">Gluteeniton</label></td>");
+					
+						out.println("<input type=\"hidden\" name=\"action\" value=\"lisaa\"/>");
+						out.println("<input type=\"hidden\" name=\"pizzanumero\" value=\""+pizzat.get(i).getId()+"\"/>");
+						
+						out.println("<button class=\"btn btn-primary btn-sm outline\" id=\"lisaanappi\" type=\"submit\"><b>Lisää koriin</b></button>");
+						out.println("</tr>");
+
+						out.println("</div>");
+													            
+						out.print("</form>");
+						}
+						
+					
+						out.println("</div>"); // xs6
+						
+						out.println("<div class=\"col-xs-6\">");
+													                			
+						for(int i=1; i < pizzat.size(); i+=2) {
+						out.print("<form action=\"TilausController\" method=\"get\">");
+						out.println("<div class=\"pizzabox\">");
+						out.println("<tr>");
+						out.println("<td><img alt=\"photo of pizza\" id=\"pizza2\" src=\"img/pizza2.jpg\"></td>");
+						out.println("<td> <p class=\"lead menuitemhead\">" + pizzat.get(i).getNimi().toUpperCase() + " </p></td>");
+						out.println("<td>" + pizzat.get(i).getTaytteet() + " </td>");
+
+						out.println("<td> <h5 class=\"menuitemprice\">" + desi.format(pizzat.get(i).getHinta()) + "€</h5></td>");
+						out.println("<td> <label><input type=\"checkbox\" name=\"gluuteniton\" value=\"Gluuteniton\">Gluteeniton</label></td>");
+						
+						out.println("<input type=\"hidden\" name=\"action\" value=\"lisaa\"/>");
+						out.println("<input type=\"hidden\" name=\"pizzanumero\" value=\""+pizzat.get(i).getId()+"\"/>");
+						
+						out.println("<button class=\"btn btn-primary btn-sm outline\" id=\"lisaanappi\" type=\"submit\"><b>Lisää koriin</b></button>");
+						
+						out.println("</tr>");
+						out.println("</div>");
+													                				
+						
+						out.print("</form>");
+						}    
+													                			
+						
+						out.println("</div>");
+			%>
+
+		</div>
+		<!-- row -->
+</div>		
+<!-- end desktop tulostus -->		
+		
+<!--  mobileMenu -tulostus -->			
+<div id="mobileMenu" class="hidden">
+		<div class="row">
+
+			<%
+				ArrayList<Pizza> pizzat1 = (ArrayList<Pizza>)request.getAttribute("pizzat");
+				DecimalFormat desi1 = new DecimalFormat("0.00");		
+						out.println("<div class=\"col-xs-12\">");
+													                       		 
+						for(int i=0; i < pizzat.size(); i++) {
+						out.print("<form action=\"TilausController\" method=\"get\">");
+													                				
+						out.println("<div class=\"pizzabox\">");
+						out.println("<div class=\"pizzaboxpieni\">");
+													                				
+						out.println("<tr>");
+						out.println("<td><img alt=\"photo of pizza\" id=\"pizza3\" src=\"img/pizza1.jpg\"></td>");
+						
+						out.println("<td> <p class=\"lead menuitemhead\">" + pizzat1.get(i).getNimi().toUpperCase() + " </p></td>");
+						out.println("<td>" + pizzat1.get(i).getTaytteet() + "</td>");
+						out.println("<td> <h5 class=\"menuitemprice\">" + desi1.format(pizzat.get(i).getHinta()) + "€</h5></td>");			
+						out.println("<td> <label><input type=\"checkbox\" class=\"gluten\" name=\"gluuteniton\" value=\"Gluuteniton\">Gluteeniton</label></td>");
+					
+						out.println("<input type=\"hidden\" name=\"action\" value=\"lisaa\"/>");
+						out.println("<input type=\"hidden\" name=\"pizzanumero\" value=\""+pizzat1.get(i).getId()+"\"/>");
+						
+						out.println("<button class=\"btn btn-primary btn-sm outline\" id=\"lisaanappi\" type=\"submit\"><b>Lisää koriin</b></button>");
+						out.println("</tr>");
+
+						out.println("</div>");
+						out.println("</div>");//pieni
+													            
+						out.print("</form>");
+						}
+
+						out.println("</div>");
+			%>
+
+		</div>
+		<!-- row -->
+</div>				
+<!-- end mobile tulostus -->			
+		
+	<!--end of pizzas----------------------------------------------------------------------------------->
+	<div class="rako"></div>
+	<!--beginning of footer----------------------------------------------------------------------------->
+	<div id="footer">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-md-6">
+					<p>something something</p>
+					<div class="row">
+						<div class="col-md-12">
+							<p>FIORI e CASTELLO 2015</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="col-md-3"></div>
+					<div class="col-md-2">
+						<i class="fa fa-facebook fa-3x"></i>
+					</div>
+					<div class="col-md-2">
+						<i class="fa fa-pinterest-p fa-3x"></i>
+					</div>
+					<div class="col-md-2">
+						<i class="fa fa-instagram fa-3x"></i>
+					</div>
+					<div class="col-md-3"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--end of footer--------------------------------------------------------------------------------->
+	<!--scrollup-------------------------------------------------------------------------------------->
+	<div id="up">
+		<a class="scroll" href="#"><span
+			class="glyphicon glyphicon-menu-up"></span></a>
+	</div>
+	<!--/scrollup------------------------------------------------------------------------------------->
+	<script src="js/jquery-2.1.4.min.js"></script>
+
+	<script src="js/bootstrap.min.js"></script>
+
+	<script src="js/index.js" type="text/javascript">
+		
+	</script>
+</body>
+</html>

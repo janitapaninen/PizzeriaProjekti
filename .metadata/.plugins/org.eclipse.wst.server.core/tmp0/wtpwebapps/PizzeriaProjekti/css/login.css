@@ -1,0 +1,86 @@
+body {
+    background: #fff;
+    font: 10pt arial;
+    color: #222;
+}
+
+h1 {
+	margin: 0 auto;
+	text-align: center;
+	padding: 25px 10px;
+	font-size: 1.9em;
+}
+
+
+
+form {
+    background: #ecf0f1;
+    width: 200px;
+    padding: 20px 20px 20px 10px;
+    border-radius: 6px;
+    border: solid 1px #aaa;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15),
+        inset 0px -5px 10px rgba(0, 0, 0, 0.05);
+    margin: 50px auto;
+    font-size: 1.2em;
+}
+ 
+fieldset {
+    margin-bottom: 20px;
+    border: none;
+}
+ 
+form fieldset:last-child {
+    margin-bottom: 0px;
+}
+ 
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    cursor: text;
+    font-size: 1.2em;
+}
+ 
+textarea,
+input[type="text"],
+input[type="password"] {
+    width: 189px;
+    display: block;
+    padding: 5px 5px;
+    border-radius: 3px;
+    border: solid 1px #aaa;
+    color: #555;
+    box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+textarea {
+    height: 50px;
+    font-size: 1.3em;
+}
+ 
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus {
+    box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.15),
+        0px 0px 5px rgba(247, 202, 24, 0.5);
+    border: solid 1px #F5D76E;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    border: solid 1px #E4F1FE;
+    border-radius: 3px;
+    color: #FFF;
+    font-size: 1.4em;
+    font-weight: bold;
+    box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.75),
+        inset 0px -1px 3px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    background: #F5D76E;
+}
+ 
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+    background: #F39C12; 
+}

@@ -1,0 +1,532 @@
+body {
+	background-color: #FFFFFC;
+	font-family: 'Hammersmith One',sans-serif;
+}
+
+h1 {
+	font-style: bold;
+	color: #ecb939;
+	font-size: 200%;
+}
+
+h3 {
+	font-size: 1.7em;
+	padding: 20px 0;
+}
+
+
+p {
+	font-size: 1.19em;
+}
+.glyphicon {
+	font-size: 25px;}
+
+.navbar-default .navbar-brand {
+	color: #F5D76E;
+	font-size: 1.4em;
+}
+
+.navbar-default .navbar-toggle:active {
+    border-color: #fff;
+    background: #fff;
+    color: #1d1d1d;
+}
+.navbar-default .navbar-toggle:hover {
+    border-color: #fff;
+    background: #fff;
+    color: #1d1d1d;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: #F5D76E;
+}
+	
+#logo {
+	/*background: url(../img/logo_yellow.png) no-repeat top fixed;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	object-fit: cover;*/
+	height: 270px;
+	width: 270px;
+	/*max-width:50%;
+	max-height:50%;*/
+	
+	}
+	
+.rako {
+	height:50px;
+	padding: 10px;
+	/*border: solid red;*/
+	}
+	
+#header {
+	background: url(../img/pizzabg_4.jpg) no-repeat center center fixed;
+	background-size: cover;
+	height: 450px;
+	padding: 30px 0 0 0;
+	margin: 50px 0 0 0;
+	
+}
+
+.h1Head {
+	margin: 0;
+	color: #F5D76E;
+	text-shadow: 0 1px #756F58;
+	font-size: 2.3em;
+	font-family: 'Hammersmith One',sans-serif;
+
+}
+
+#footer {
+	background-color: #1d1d1d;
+	height: 260px;
+	color: #FFFFFC;
+	padding: 50px;
+	
+}
+
+.header {
+	display:table !important;
+	height:300px;
+}
+	
+.intro {
+	text-align:center;
+	font-size: 120%;
+	font-style:bold;
+	color: white;
+	 display:table-cell;
+    vertical-align:middle;
+}
+
+.minibox {
+	height:100px;
+	width:100px;}
+	}
+	
+	
+.btn.outline {
+    background: none;
+    padding: 0px;
+}
+
+.btn-primary.outline {
+    border: 2px solid #ecb939;
+    color: #ecb939;
+}
+
+.btn-primary.outline:hover, .btn-primary.outline:focus, .btn-primary.outline:active, .btn-primary.outline.active, .open > .dropdown-toggle.btn-primary {
+    color: #33a6cc;
+    border-color: #33a6cc;
+}
+.btn-primary.outline:active, .btn-primary.outline.active {
+    border-color: #007299;
+    /*color: #007299;*/
+    box-shadow: none;
+}
+	
+#pizza2 {
+	width:220px;
+	height:150px;
+	padding-top:0px;
+	float:left;
+	border: solid 0px;
+	}
+	
+#pizza1 {
+	width:100%;
+	height:100%;
+	margin: 0 auto;
+	}
+
+
+.jarjesta {
+	float:right;
+	height: 32px;
+}
+
+.selitys {
+	line-height:18px;
+	}
+	
+#up {
+	position:fixed;
+	bottom:20px;
+	right:20px;
+	}
+	
+.scroll {
+	display:block;
+	}
+
+.some {
+	font-size:50px;}
+
+.pizzabox {
+	border: solid 0px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	text-align: center;
+}
+
+
+.menuitembox {
+	height: 171px;
+}
+
+.menuitemheadBox {
+	margin: 0;
+	border-bottom: 3px solid #F5D76E;
+	height: 100px;
+	position: relative;
+}
+
+.menuitemhead {
+	margin: 0;
+	color: #F5D76E;
+	text-shadow: 0 1px #756F58;
+	font-size: 2.4em;
+	font-family: 'Hammersmith One',sans-serif;
+	text-align: center;
+	vertical-align: bottom;
+	bottom: 0;
+	position: absolute;
+	width: 100%;
+}
+
+
+
+.menufilling {
+	padding: 25px 0 0 0;
+	font-size: 1.1em;
+	font-family: 'Capriola', sans-serif;
+	text-align: center;
+	height: 100px;
+}
+
+.menuitemprice {
+	float: right;
+	bottom: 0;
+	color: #1d1d1d;
+	font-size: 1.7em;
+	font-family: 'Hammersmith One',sans-serif;
+	/*margin: 0 8px;
+	padding: 0 2px 8px 2px;*/
+
+}
+
+/*.col-xs-5 {
+	width: 60%;
+	heigth: 50%;
+}*/
+
+#list2 {
+	float: right;
+}
+
+.row {
+	border:solid 0px;
+}
+
+ul.dropdown-cart{
+    min-width:250px;
+}
+ul.dropdown-cart li .item{
+    display:block;
+    padding:3px 10px;
+    margin: 3px 0;
+   
+}
+ul.dropdown-cart li .item:hover{
+    background-color:#f3f3f3;
+}
+ul.dropdown-cart li .item:after{
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+ul.dropdown-cart li .item-left{
+    float:left;
+}
+ul.dropdown-cart li .item-left img,
+ul.dropdown-cart li .item-left span.item-info{
+    float:left;
+}
+ul.dropdown-cart li .item-left span.item-info{
+    margin-left:10px;   
+}
+ul.dropdown-cart li .item-left span.item-info span{
+    display:block;
+}
+ul.dropdown-cart li .item-right{
+    float:right;
+}
+ul.dropdown-cart li .item-right button{
+    margin-top:14px;
+}
+
+.navbar {
+	margin-bottom: 0;
+	background-color: black;
+}
+
+.navbar-default {
+   
+    border-color: black;
+    border: none!important;
+}
+
+.navbar-brand {
+	color: white;
+}
+
+.pizzaboxpieni {
+	height: 150px;
+	width: 350px;
+	border: solid 0px;
+	padding-bottom: 250px;
+}
+
+#pizza3 {
+	width: 150px;
+	height: 100px;
+	
+}
+
+.gluten {
+	float: left;
+}
+
+/*misc*/
+
+.visible {
+	visibility: visible!important;
+}	
+	
+.hidden {
+	visibility: hidden!important;
+}	
+
+
+
+
+
+
+/*
+.pizzaInner, .pizzaInnerPhoto {
+	padding: 15px;
+	height: 200px;
+	margin: 0 auto;
+
+}*/
+
+/*
+
+.pizzaPhoto{
+	margin: auto;
+	width: 100%;
+	height: 100%;
+}*/
+
+
+
+/*
+.pizzaPhoto {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}*/
+
+
+	/*display: flex;*/ /*
+.pizzaInnerPhoto {
+
+  height: 320px;
+  width: 320px;
+  margin: 0 auto;
+}
+
+.pizzaInnerText {
+	height: 320px;
+	width: 320px;
+	padding: 30px 15px;
+	margin: 0 auto;
+	margin-bottom: 100px;
+
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+.pizzaContainer {
+	margin: 35px auto;
+	height: 600px;
+	width: 270px;
+}
+
+
+.boxPizzaImg {
+  	/*background: royalblue;*/
+  height: 270px;
+  width: 300px;
+  padding: 0 15px 0 15px;
+  margin: 0 auto;
+}
+
+.boxPizzaTxt {
+  	/*background: pink;*/
+  height: 280px;
+  width: 300px;
+  padding: 5px 5px 0 5px;
+  margin: 0 auto;
+}
+
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  padding: 5px; 
+}
+
+.price {
+  position: absolute;
+  bottom: 50px;
+  height: 50px;
+  width: 100%;
+  padding: 5px; 
+}
+
+.center {
+  height: 100%;
+  margin: 0 auto;
+}
+
+.noMarginPadding {
+	margin: 0!important;
+	padding: 0!important;
+}
+
+/*pitäisi muuttaa classiks */
+.lisaanappi, .right {
+	float: right;
+}
+
+
+.shadow {
+	-webkit-box-shadow: 0 9px 8px -6px #1d1d1d;
+	   -moz-box-shadow: 0 9px 8px -6px #1d1d1d;
+	        box-shadow: 0 9px 8px -6px #1d1d1d;
+}
+
+.inputSmall {
+	width: 40px;
+	height: 32px;
+}
+
+.scroll-top {
+	position:fixed;
+	bottom:0;
+	right:3%;
+	z-index:100;
+	background: #F5D76E!important;
+	font-size:28px;
+	border-top-left-radius:3px;
+	border-top-right-radius:3px;
+}
+
+.scroll-top a:link,.scroll-top a:visited {
+  color:#222;
+} 
+
+.navbar-default .navbar-toggle {
+    border-color: #F5D76E;
+    background: #F5D76E;
+}
+.navbar-default .navbar-toggle:active {
+    border-color: #fff;
+    background: #fff;
+    color: #1d1d1d;
+}
+.navbar-default .navbar-toggle:hover {
+    border-color: #fff;
+    background: #fff;
+    color: #1d1d1d;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: #F5D76E;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #1d1d1d;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #ecf0f1;
+}
+
+/*ostoskori*/
+.navbar-default .navbar-nav>li>a {
+    color: #F5D76E;
+}
+
+#ostoskori {
+	background: none;
+	-webkit-animation-name: korianim; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 2s; /* Chrome, Safari, Opera */
+    animation-name: korianim;
+    animation-duration: 2s;
+}
+
+.navbar-default .navbar-nav>li>a {
+	-webkit-animation-name: korianim; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 2s; /* Chrome, Safari, Opera */
+    animation-name: korianim;
+    animation-duration: 2s;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes korianim {
+    0%   {color: #F5D76E; background: none;}
+    25%  {color: green; background: lightgreen;}
+    100% {color: #F5D76E; background: none;}
+}
+
+/* Standard syntax */
+@keyframes korianim {
+    0%   {color: #F5D76E; background: none;}
+    25%  {color: green; background: lightgreen;}
+    100% {color: #F5D76E; background: none;}
+}
+
+
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    color: #ecf0f1;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    color: #1d1d1d;
+    background-color: #F5D76E;
+}
+/*remove mobile nav
+http://www.bootply.com/104747*/
+

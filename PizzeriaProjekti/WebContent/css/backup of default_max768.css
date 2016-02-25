@@ -1,0 +1,326 @@
+@media screen and (max-width: 768px){
+
+/* 		FRONT PAGE		*/
+html,body {
+	height: 100%;
+	text-align: center;
+	background-color: #1d1d1d;
+}
+
+body {
+	 margin: auto;
+}
+
+#bg {
+	background: url(../img/headbg.jpg) no-repeat center center fixed;
+    height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    background-color: #FFFFEF;
+    color: #000;
+    text-align: center;
+}
+
+.logo {
+	visibility: hidden;
+	color: #FFB347;
+	font-family: 'Josefin Sans',sans-serif;
+	font-weight: 700;
+    font-size: 3em;
+}
+
+.logo2 {
+	visibility: hidden;
+	color: #FFB347;
+	font-family: 'Caveat', cursive;
+	font-weight: 200;
+    font-size: 1.8em;
+    margin-top: .8em;
+	text-decoration: underline;
+}
+
+.headerTxt {
+	padding-top: 70px;
+	margin: 0 auto;
+	/*color: #1d1d1d;*/
+	color: #ECF0F1;
+	text-shadow: 0 1px #616161;
+	font-size: 3em;
+	font-family: 'Lobster', sans-serif;
+	width: 95%;
+	/*font-family: 'Quando', serif;
+	font-family: 'Capriola', sans-serif;*/
+	
+	/*display: inline;
+	padding: 16px 55px 16px 55px;
+	border-style: dashed;*/
+	
+	/*border-bottom: thick solid #141414;
+	padding-bottom: 10px;*/
+}
+
+.customerBtn {
+    background-color: rgba(0,0,0,0.3);
+    background-repeat: no-repeat;
+    border: solid .3em;
+  	border-radius: .1em;
+    border-color: #F5D76E;
+    cursor: pointer;
+    overflow: hidden;
+    margin-top: 10%;
+    padding: 7px 35px 0 35px;
+    text-shadow: 0 1px rgba(0,0,0,0.9);
+    -webkit-box-shadow: 0px 0.5px 0px 1px rgba(0,0,0,0.9);
+	-moz-box-shadow: 0px .03em 0px 1px rgba(0,0,0,0.9);
+	box-shadow: 0px .03em 0px 1px rgba(0,0,0,0.9);
+	min-width: 252px;
+	max-width: 252px;
+}
+.customerBtn>p {
+	font-family: 'Hammersmith One',sans-serif;
+    /*color: #FFEA97;*/
+    color: #F5D76E;
+    font-size: 1.45em;
+   /* padding: 0px 25px;*/
+}
+
+.customerBtn:hover {
+	background-color: #141414;
+	opacity: 0.88;
+    -webkit-transition: background-color .27s ease-in-out, opacity .3s ease;
+    -moz-transition: background-color .27s ease-in-out, opacity .3s ease;
+    transition: background-color .27s ease-in-out, opacity .3s ease;
+}
+
+/*		CONTENT	BACKGROUNDS		*/
+.content-bg {
+	background-color: #FFFFFC;
+	/*background: url(../img/groovepaper_2X.png) repeat center center;
+	background: url(../img/whitebg.png) no-repeat center center fixed;*/
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	width: 100%;
+	padding: 50px 0 260px 0;
+	margin: 0;
+	z-index: 2;
+}
+
+section {
+    height:380px;
+    padding-top:50px;
+    padding-bottom:50px;
+    overflow:auto;
+}
+
+.bg-1 {
+	background: url(../img/basil2.png) no-repeat center fixed;
+    object-fit: cover;
+}
+  
+.bg-2 {
+	background: url(../img/mozzarella4.png) no-repeat top center fixed;
+    object-fit: cover;
+}
+
+.bg-3 {
+	background: url(../img/tomato2.png) no-repeat top center fixed;
+    object-fit: cover;
+}
+
+/* navigation */
+
+#nav-wrap {
+	margin-top: -63px;
+}
+
+.navbar-nav {
+    float:none;
+	margin: 0 auto;
+    display: table;
+    table-layout: fixed;
+}
+
+.navbar {
+	margin-bottom: 0;
+	background-color: rgba(11,11,11,0.15);
+}
+
+.navbar-default .navbar-nav>li>a {
+	font-size: 1.7em;
+	color: #ecf0f1;
+}
+.navbar-default .navbar-nav>li>a:hover {
+	color: #F4D03F;
+}
+.navbar-default .navbar-nav>li {
+	bottom: 6px;
+}
+.navbar-default {
+    border-bottom-width: 0;
+	font-family: 'Josefin Sans',sans-serif;
+}
+.navbar-default .navbar-brand {
+	color: #F4D03F;
+}
+
+/* NAVIGATION STICK-TO-TOP */
+
+.navbar.affix {
+	background-color: #141414;
+	opacity: 0.97;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    -webkit-transition: background .4s ease-in-out, opacity .5s ease;
+    -moz-transition: background .4s ease-in-out, opacity .5s ease;
+    transition: background .4s ease-in-out, opacity .5s ease;
+}
+
+/*		REAPATING CONTENT		*/
+
+.subhead {
+	margin: 80px 0 80px 0;
+	/*color: #1d1d1d;*/
+	color: #FFDD8A;
+	text-shadow: 0 1px #616161;
+	font-size: 46px;
+	font-family: 'Hammersmith One',sans-serif;
+}
+
+/*			PAGE 1 info				*/
+
+
+/*			PAGE 2 ravintola		*/
+
+
+/*			PAGE 3 ruoka			*/
+
+.accordionhead {
+	margin: 0;
+	/*color: #1d1d1d;*/
+	/*color: #FFDD8A;*/
+	color: #f0c75e;
+	/*text-shadow: 0 1px #616161;*/
+	font-size: 36px;
+	font-family: 'Hammersmith One',sans-serif;
+	/*font-family: 'Quando', serif;
+	font-family: 'Capriola', sans-serif;*/
+	
+	/*display: inline;
+	padding: 16px 55px 16px 55px;
+	border-style: dashed;*/
+	
+	/*border-bottom: thick solid #141414;
+	padding-bottom: 10px;*/
+}
+
+.menuitembox {
+	/*padding-top: 30px;
+	padding-bottom: 30px;*/
+	height: 181px;
+}
+
+.dividerFlower {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+#jarjestabox {
+	height: 150px;
+	margin: 0;
+	paddin: 0;
+}
+
+#jarjestanappi>#dropdownMenu1>ul>li {
+	position: absolute;
+	margin: 0;
+	paddin: 0;
+}
+
+.menuitemhead {
+	margin: 0;
+	/*color: #1d1d1d;*/
+	color: #ecb939;
+	/*color: #000;*/
+	/*text-shadow: 0 1px #616161;*/
+	font-size: 26px;
+	font-family: 'Hammersmith One',sans-serif;
+	/*font-family: 'Quando', serif;
+	font-family: 'Capriola', sans-serif;*/
+	border-bottom: 3px solid #f0c75e;
+	/*display: inline;
+	padding: 16px 55px 16px 55px;
+	border-style: dashed;*/
+	
+	/*border-bottom: thick solid #141414;
+	padding-bottom: 10px;*/
+}
+.menuitemprice {
+	margin: 0;
+	color: #1d1d1d;
+	/*color: #ecb939;*/
+	/*color: #000;*/
+	/*text-shadow: 0 1px #616161;*/
+	font-size: 20px;
+	font-family: 'Hammersmith One',sans-serif;
+	/*font-family: 'Quando', serif;
+	font-family: 'Capriola', sans-serif;*/
+	
+	/*display: inline;
+	padding: 16px 55px 16px 55px;
+	border-style: dashed;*/
+	
+	/*border-bottom: thick solid #141414;
+	padding-bottom: 10px;*/
+}
+
+/* accordion panel */
+
+.panel-heading {
+	background-color: #F2F1EF!important;
+	height: 60px;
+}
+
+.accordion-toggle {
+    background-color: #F2F1EF;
+	opacity: 0.97;
+    -webkit-transition: background .4s ease-in-out, opacity .5s ease;
+    -moz-transition: background .4s ease-in-out, opacity .5s ease;
+    transition: background .4s ease-in-out, opacity .5s ease;
+}
+
+/*		PAGE 4, yhteystiedot/contact 	*/
+
+.lastbg {
+	padding:0;
+}
+	
+/*		PAGE FOOTER						*/
+#footer>.row{ /* REMOVES WHITE SPACE */
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+}
+
+#footer {
+	background-color: #1d1d1d;
+	height: 260px;
+	color: #FFFFFC;
+	padding: 50px;
+}
+	
+}
+
+
+
+
+
+
+
+/* #### Mobile Phones Portrait #### TODO:VALMIISEEN VERSIOON OIKEAT LAITTEET*/
+/*@media screen and (max-device-width: 480px) and (orientation: portrait)*/

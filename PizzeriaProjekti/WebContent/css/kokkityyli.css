@@ -1,0 +1,128 @@
+* {
+    font-family: Verdana;
+}
+body {
+	position: center;
+    top: 5%;
+    left: 50%;
+    margin-top: 75px;
+    margin-left: 5px;
+}
+
+h1 {
+	margin-left: 10px;
+	color:orange;
+}
+
+
+table {
+	border: 2px;
+    border-color: black;
+    border-style: solid;
+    height:50px;
+    padding: 5px;
+    width:80%;
+    table-layout: fixed;
+}
+
+tr {
+	border: solid 1px black;
+}
+
+tr:nth-child(even) {
+    background-color: #F8F8F8;
+}
+
+
+td {
+    border: 0px;
+     flex:1;
+    padding: 15px;
+    }
+
+td:nth-child(2) {
+	width:200px; 
+}
+ 
+td:nth-child(3) {
+	width:150px; 
+}  
+  
+td:nth-child(7) {
+	width:200px; 
+}
+  
+   
+td:nth-child(8) {
+	width:200px; 
+}
+
+td:nth-child(9) {
+	width:100px; 
+}
+td:nth-child(10) {
+	width:100px; 
+}
+    
+
+#frm1_submit {
+	border-radius: 5px;
+	height: 30px;
+}
+
+#frm2_submit {
+	border-radius: 5px;
+	height: 30px;
+}
+
+#frm3_submit {
+	border-radius: 5px;
+	height: 30px;
+}
+
+#logout {
+	margin: 0 0 0 10px;
+	background: orange;
+	border: 1px solid;
+	padding: 7px 11px;
+	color: #1d1d1d;
+	font-size: 1.3em;
+	position: fixed;
+	right: 15px;
+	border-radius: 5px;
+}
+
+#vali {
+	margin-top: 10px;
+}
+
+.vanhatNayta {
+	margin-top: 30px;
+}
+
+.vanhatPiilota {
+	margin-top: 30px;
+}
+
+.vanhatTable {
+	border: 2px;
+    border-color: black;
+    border-style: solid;
+    height:50px;
+    padding: 5px;
+    width:70%;
+    table-layout: fixed;
+    background-color: #F8F8F8;
+}
+
+.vanhatTable td{
+	width:100px;
+}
+
+.vanhatTable td:nth-child(1) {
+	width:50px; 
+} 
+
+.vanhatTable td:nth-child(8) {
+	width:150px; 
+} 

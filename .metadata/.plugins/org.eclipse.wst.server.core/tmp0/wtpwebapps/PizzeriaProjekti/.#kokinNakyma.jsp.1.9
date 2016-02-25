@@ -1,0 +1,134 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="fi.pizzeriaprojekti.admin.bean.*"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/admin.js"></script>
+<title>Tilaukset</title>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
+     
+</head>
+<body>
+
+<div id="load_me"></div>
+
+	<%
+		//allow access only if session exists
+	if(session.getAttribute("user") == null){
+	    response.sendRedirect("login.jsp");
+	}
+	String userName = null;
+	String sessionID = null;
+	Cookie[] cookies = request.getCookies();
+	if(cookies !=null){
+	for(Cookie cookie : cookies){
+	    if(cookie.getName().equals("user")) userName = cookie.getValue();
+	}
+	}
+	%>
+	<h3>
+		Hi
+		<%=userName%>, do the checkout.
+	</h3>
+	
+		<h1>Tilaukset</h1>
+
+		<div class="tilaukset">
+
+			<h1>Tilaukset</h1>
+			<table>
+
+		<thead>
+			<tr>
+				<td>Tilaus ID</td>
+				<td>Tilaaja</td>
+				<td>Puhelin</td>
+				<td>Päivämäärä</td>
+				<td>Kellonaika</td>
+				<td>Tilauksen summa</td>
+				<td>Kuittaus</td>
+			</tr>
+		</thead>
+		<tbody>
+
+
+			<%
+				DecimalFormat desi = new DecimalFormat("0.00");
+
+				ArrayList<JukanTilaus> tilaus = (ArrayList<JukanTilaus>) request.getAttribute("tilaus");
+				
+				for (int i = 0; i < tilaus.size(); i++) {
+					out.print("<form action=\"kokkiController\" method=\"get\">");
+					out.println("<tr>");
+					out.println("<td>" + tilaus.get(i).getTilausId() + "</td>");
+					out.println("<td>" + tilaus.get(i).getTilaaja() + "</td>");
+					out.println("<td>" + tilaus.get(i).getPuhnro() + "</td>");
+					out.println("<td>" + tilaus.get(i).getPvm() + "</td>");
+					out.println("<td>" + tilaus.get(i).getKlo() + "</td>");
+					out.println("<td>" + desi.format(tilaus.get(i).getSumma()) + "</td>");
+					out.println("<td>" + tilaus.get(i).getKommentt() + "</td>");
+					out.println("<input type=\"hidden\" name=\"action\" value=\"kuittaa\"/>");
+					out.println("<input type=\"hidden\" name=\"tilausnumero\" value=\""+tilaus.get(i).getTilausId()+"\"/>");
+					out.println("<td><button class=\"nappi\" type=\"submit\">Kuittaa</button></td>");
+					out.println("</tr>");
+					out.println("<tr>");
+					out.println("<td>Pizza:</td>");
+					out.println("<td>Määrä:</td>");
+					out.println("</tr>");
+						
+					Iterator<Pizza> it = tilaus.get(i).getTuotteet().iterator();					
+					while (it.hasNext()) {
+					out.println("<tr>");
+					out.println("<td>"+((Pizza)it.next()).getNimi()+ "</td>");
+					out.println("<td>"+((Pizza)it.next()).getHinta()+ "</td>");
+					out.println("</tr>");
+					out.println("</form>");
+					}
+					
+					//private ArrayList<Pizza> tuotteet;
+					
+				}
+	%>
+	</tbody>
+	</table>
+
+	</div>
+
+	<form action="Controller" method="get">
+		<input type="submit" value="Takaisin" name="Submit" id="frm2_submit" />
+	</form>
+	
+	   <script>
+           
+	   setTimeout(function(){
+		   window.location.reload(1);
+		}, 30000);
+	   
+	   
+	   /* $(document).ready(function() {
+                var reloadData = 0; // store timer
+
+                // load data on page load, which sets timeout to reload again
+                loadData();
+            });
+
+            function loadData() {
+                $('#load_me').load('kokinNakyma.jsp', function() {
+                    if (reloadData != 0)
+                        window.clearTimeout(reloadData);
+                    reloadData = window.setTimeout(loadData, 10000)
+                }).fadeIn("slow"); 
+            }*/
+            
+		</script>
+	
+
+</body>
+</html>
